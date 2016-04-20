@@ -6,7 +6,7 @@ using namespace std;
 
 int **inputFunction(const char* filename)//Returns the inputArray
 {
-    int M,N,i,j; //N rows and M coloumns!!M is coloumns
+    int M,N,i,j; //M rows and N coloumns!!M is coloumns if M N is inputed
     fstream input;
     input.open(filename, ios::in);
     input>>M;
