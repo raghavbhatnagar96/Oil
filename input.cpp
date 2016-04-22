@@ -54,6 +54,7 @@ int **getSumArray(int **inputArray, int M, int N, int K)//returns 2D array of si
     return sumArray;
 }
 
+/*
 int main(int argc, char *argv[])
 {
     int M,N;
@@ -73,7 +74,9 @@ int main(int argc, char *argv[])
     }
     int **inputArray = inputFunction("test.dat");
     int **sumArray= getSumArray(inputArray, M, N, K);
-    /*for(int i=0;i<M;i++)//Test case for making sure that getSumArray and inputFunction work
+    
+    //////
+    for(int i=0;i<M;i++)//Test case for making sure that getSumArray and inputFunction work
     {
         for(int j=0;j<N;j++)
         {
@@ -89,5 +92,7 @@ int main(int argc, char *argv[])
             cout<<sumArray[i][j]<<" ";
         }
         cout<<"\n";
-    }*/
+    }
+    ///////
 }
+*/
