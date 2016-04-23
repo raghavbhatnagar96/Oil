@@ -19,11 +19,11 @@ int getMaxSum(int ***areas,int **matrix,int M,int N,int K)
     {
         for(int j=0;j<=N-K;j++)
         {
-            int max=0;
             for(int x=0;x<=M-K;x++)
             {
                 for(int y=0;y<=N-K;y++)
                 {
+                    int max=0;
                     if(intersect(i,j,i+K-1,j+K-1,x,y,K)==0)
                     {
                         //get the 3rd matrix as the maximum in all remaining areas
@@ -31,14 +31,22 @@ int getMaxSum(int ***areas,int **matrix,int M,int N,int K)
                         max=maxm(max,Tfun(areas,j,i,y,x,y,x+K-1,M,N,K));
                         max=maxm(max,Tfun(areas,j,i,y,x,y+K-1,x,M,N,K));
                         max=maxm(max,Tfun(areas,j,i,y,x,y+K-1,x+K-1,M,N,K));
-                        max=maxm(max,bottom(areas,M,N,y+K-1,i,j,K));
-                        max=maxm(max,right(areas,M,N,x+K-1,i,j,K));
+                        max=maxm(max,bottom(areas,M,N,y+K,i,j,K));
+                        max=maxm(max,right(areas,M,N,x+K,i,j,K));
                         //cout<<"max is:"<<max<<endl;
                         //sum=maxm(sum,(matrix[i][j]+matrix[x][y]+max));
                         if((matrix[i][j]+matrix[x][y]+max)>sum)
                         {
                             sum=(matrix[i][j]+matrix[x][y]+max);
+                            /*
+                            cout<<(Tfun(areas,j,i,y,x,y,x,M,N,K))<<" ";
+                            cout<<(Tfun(areas,j,i,y,x,y,x+K-1,M,N,K))<<" ";
+                            cout<<(Tfun(areas,j,i,y,x,y+K-1,x,M,N,K))<<" ";
+                            cout<<(Tfun(areas,j,i,y,x,y+K-1,x+K-1,M,N,K))<<" ";
+                            cout<<(bottom(areas,M,N,y+K,i,j,K))<<" ";
+                            cout<<(right(areas,M,N,x+K,i,j,K))<<endl;
                             cout<<i<<" "<<j<<" "<<x<<" "<<y<<" "<<max<<" "<<sum<<endl;
+                            */
                         }
                     }
                 }
