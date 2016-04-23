@@ -11,14 +11,16 @@ int main(int argc, char *argv[])
     input>>M;
     input>>N;
 
+    /*
     if(argc != 2)//To make sure that K is inputed.
     {
         cout<<"Input format is: './oil <K>'\n";
         return 0;
     }
+    */
 
-    int K= atoi(argv[1]);//
-    //int K=1;
+    //int K= atoi(argv[1]);//
+    int K=2;
     if((K>M)||(K>N))//Make sure that K is less than M and N
     {
         return 0;
@@ -26,17 +28,13 @@ int main(int argc, char *argv[])
 
     int **inputArray = inputFunction("test.dat");
     int **sumArray= getSumArray(inputArray, M, N, K);
-    int ****areas=new int***[M];
-    for(int i=0;i<M;i++)
+    int ***areas=new int**[M+1];
+    for(int i=0;i<=M;i++)
     {
-        areas[i]=new int**[N];
-        for(int j=0;j<N;j++)
-        {
-            areas[i][j]=new int*[M];
-            for(int k=0;k<M;k++)
-                areas[i][j][k]=new int[N];
-        }
+        areas[i]=new int*[N+1];
+        for(int j=0;j<=N;j++)
+            areas[i][j]=new int[4];
     }
    getMaxInArea(areas,sumArray,M,N,K); 
-   cout<<areas[6][3][8][6]<<endl;
+   cout<<areas[6][3][1]<<endl;
 }
