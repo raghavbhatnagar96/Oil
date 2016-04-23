@@ -10,7 +10,7 @@ int isInside(int w, int x, int y, int z, int a, int b)
 }
 
 
-int doesIntersect(int w, int x, int y, int z, int a, int b, int k)//(w,x) and (y,z) are the diagonal points of area. (a,b) is the upper right point of the sub-matrix
+int intersect(int w, int x, int y, int z, int a, int b, int k)//(w,x) and (y,z) are the diagonal points of area. (a,b) is the upper right point of the sub-matrix
 {
     if(isInside(w, x, y, z, a, b))
     {
@@ -32,8 +32,10 @@ int doesIntersect(int w, int x, int y, int z, int a, int b, int k)//(w,x) and (y
         return 0;
 }
 
+/*
 int main()
 {
-    std::cout << doesIntersect(0,0,4,4,,3,3);
+    std::cout << doesIntersect(0,0,4,4,3,3,3);
     return 0;
 }
+*/

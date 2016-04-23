@@ -3,85 +3,86 @@
 #include<stdio.h>
 
 using namespace std;
+#include"intersection.cpp"
 
 //M - columns
 //N - rows
 //dimensions written as NxM
-int Tfun(int fx, int fy, int sx, int sy, int mx, int my, int N, int M)
+int Tfun(int ***areas,int fx, int fy, int sx, int sy, int mx, int my, int N, int M,int K)
 	{
 	int max=0,a,b,c,d,e,f,g,h,i,j,k,l;
-	if((!intersect(0,0,N-1,my,fx,fy)) && (!intersect(0,0,N-1,my,sx,sy)))
+	if((!intersect(0,0,N-1,my,fx,fy,K)) && (!intersect(0,0,N-1,my,sx,sy,K)))
 		{
-		a=MAXTOPLEFT; // (N-1) x (mx)
+		a=areas[mx+1][N][1];//MAXTOPLEFT; // (N-1) x (mx)
 		if(max>a)
 			max=a;
 		}
-	if((!intersect(0,my,mx,M-1,fx,fy)) && (!intersect(0,my,mx,M-1,sx,sy)))
+	if((!intersect(0,my,mx,M-1,fx,fy,K)) && (!intersect(0,my,mx,M-1,sx,sy,K)))
 		{
-		b=MAXTOPRIGHT; //(mx) x (M-1-my)
+		b=areas[M-my][mx+1][1];//MAXTOPRIGHT; //(mx) x (M-1-my)
 		if(max>b)
 			max=b;
 		}
-	if((!intersect(mx,my,N-1,M-1,fx,fy)) && (!intersect(mx,my,N-1,M-1,sx,sy)))
+	if((!intersect(mx,my,N-1,M-1,fx,fy,K)) && (!intersect(mx,my,N-1,M-1,sx,sy,K)))
 		{
-		c=MAXBOTRIGHT; //(N-1-mx) x (M-1-my)
+		c=areas[M-my][N-mx][2];//MAXBOTRIGHT; //(N-1-mx) x (M-1-my)
 		if(max>c)
 			max=c;
 		}
 	
-	if((!intersect(0,0,mx,my,fx,fy)) && (!intersect(0,0,mx,my,sx,sy)))
+	if((!intersect(0,0,mx,my,fx,fy,K)) && (!intersect(0,0,mx,my,sx,sy,K)))
 		{
-		d=MAXTOPLEFT; //(mx) x (my)
+		d=areas[my+1][mx+1][1];//MAXTOPLEFT; //(mx) x (my)
 		if(max>d)
 			max=d;
 		}
-	if((!intersect(mx,0,N-1,my,fx,fy)) && (!intersect(mx,0,N-1,my,sx,sy)))
+	if((!intersect(mx,0,N-1,my,fx,fy,K)) && (!intersect(mx,0,N-1,my,sx,sy,K)))
 		{
-		e=MAXBOTLEFT; //(N-1-mx) x (my)
+		e=areas[my+1][N-mx][2];//MAXBOTLEFT; //(N-1-mx) x (my)
 		if(max>e)
 			max=e;
 		}
-	if((!intersect(0,my,N-1,M-1,fx,fy)) && (!intersect(0,my,N-1,M-1,sx,sy)))
+	if((!intersect(0,my,N-1,M-1,fx,fy,K)) && (!intersect(0,my,N-1,M-1,sx,sy,K)))
 		{
-		f=MAXTOPRIGHT;// (N-1) x (M-1-my)
+		f=areas[M-my][N][1];//MAXTOPRIGHT;// (N-1) x (M-1-my)
 		if(max>f)
 			max=f;
 		}
 
-	if((!intersect(0,0,mx,my,fx,fy)) && (!intersect(0,0,mx,my,sx,sy)))
+	if((!intersect(0,0,mx,my,fx,fy,K)) && (!intersect(0,0,mx,my,sx,sy,K)))
 		{
-		g=MAXTOPLEFT; //(mx) x (my)
+		g=areas[my+1][mx+1][1];//MAXTOPLEFT; //(mx) x (my)
 		if(max>g)
 			max=g;
 		}
-	if((!intersect(0,my,mx,M-1,fx,fy)) && (!intersect(0,my,mx,M-1,sx,sy)))
+	if((!intersect(0,my,mx,M-1,fx,fy,K)) && (!intersect(0,my,mx,M-1,sx,sy,K)))
 		{
-		h=MAXTOPRIGHT; //(mx) x (M-1-my)
+		h=areas[M-my][mx+1][1];//MAXTOPRIGHT; //(mx) x (M-1-my)
 		if(max>h)
 			max=h;
 		}
-	if((!intersect(mx,0,N-1,M-1,fx,fy)) && (!intersect(mx,0,N-1,M-1,sx,sy)))
+	if((!intersect(mx,0,N-1,M-1,fx,fy,K)) && (!intersect(mx,0,N-1,M-1,sx,sy,K)))
 		{
-		i=MAXBOTRIGHT;//(N-1-mx) x (M-1)
+		i=areas[M][N-mx][2];//MAXBOTRIGHT;//(N-1-mx) x (M-1)
 		if(max>i)
 			max=i;
 		}
 	
-	if((!intersect(0,0,mx,M-1,fx,fy)) && (!intersect(0,0,mx,M-1,sx,sy)))
+	if((!intersect(0,0,mx,M-1,fx,fy,K)) && (!intersect(0,0,mx,M-1,sx,sy,K)))
 		{
-		j=MAXTOPRIGHT; // (mx) x (M-1)
+		j=areas[M][mx+1][1];//MAXTOPRIGHT; // (mx) x (M-1)
 		if(max>j)
 			max=j;
 		}
-	if((!intersect(mx,0,N-1,my,fx,fy)) && (!intersect(mx,0,N-1,my,sx,sy)))
+	if((!intersect(mx,0,N-1,my,fx,fy,K)) && (!intersect(mx,0,N-1,my,sx,sy,K)))
 		{
-		k=MAXBOTLEFT; //(N-1-mx) x (my)
+		k=areas[my+1][N-mx][2];//MAXBOTLEFT; //(N-1-mx) x (my)
 		if(max>k)
 			max=k;
 		}
-	if((!intersect(mx,my,N-1,M-1,fx,fy)) && (!intersect(mx,my,N-1,M-1,sx,sy)))
+	if((!intersect(mx,my,N-1,M-1,fx,fy,K)) && (!intersect(mx,my,N-1,M-1,sx,sy,K)))
 		{
-		l=MAXBOTRIGHT;//(N-1-mx) x (M-1-my)
+		l=areas[M-my][N-mx][2];//MAXBOTRIGHT;//(N-1-mx) x (M-1-my)
 		if(max>l)
 			max=l;
 		}
@@ -89,7 +90,9 @@ int Tfun(int fx, int fy, int sx, int sy, int mx, int my, int N, int M)
 	return max;
 	}
 	
+/*
 int main()
 	{
 	return 0;
 	}
+*/
