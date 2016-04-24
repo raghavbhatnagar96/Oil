@@ -6,24 +6,28 @@ Given an MxN matrix and a number K (K<M and K<N), our code searches for 3 disjoi
 	Proper compiling instructions are to be done as stated in the makefile. The max sum of the 3 matrices are then outputted on the screen.
 	$make
 
-2. Execution indtructions
+2. Execution instructions
 	$./main <path/filename> <K>
 
 3. Pseudo Code of the Algorithm
 
 We first choose two matrices of order K x K. The third matrix has to be the maximum K x K matrix such that it does not intersect with the other two.
 
-Choosing the first two matrices is O(MN)^2. We check the remaining region for the maximum matrix. By storing the maximum K x K matrix in different possible areas in an array of size M x N x 4 (stored in O(MN)^2), this can be obtained in order one.
+Choosing the first two matrices is O(MN)^2. We check the remaining region for the maximum matrix. By storing the maximum K x K matrix in different possible areas in an array of size M x N x 4 (again in O(MN)^2), this can be obtained in order one.
 
 Order of algorithm - O(MN)^2
 
+    main.cpp:
 
 	a)main()
-        sumArray[M][N] stores the partial sums of all the K x K matrices
-        areas[M][N][4] stores the maximum K x K matrix in a given area
-        getMaxSum() returns the maximum sum of three disjoint matrices for the given input
+        inputArray[M][N] = inputFunction("file") //Stores the input from file
+        sumArray[M][N] = getSumArray(inputArray) //Stores the partial sums of all the K x K matrices
+        getMaxinArea(areas,sumArray) //areas[M][N][4] stores the maximum K x K matrix in a given area
+        getMaxSum(areas,sumArray) //returns the maximum sum of three disjoint matrices for the given input
 
-	b)inputFunction:
+    input.cpp:
+	
+    b)inputFunction:
 		//Takes input and stores in a 2D matrix.
 		input>>M;
 		input>>N;
@@ -43,6 +47,8 @@ Order of algorithm - O(MN)^2
 	                    sum=sum+inputArray[x][y];
 	            sumArray[i][j]=sum;
 		return sumArray;
+
+    areas.cpp:
 
     d)getMaxinArea:
         //stores max K x K matrix in every possible area size from 1 x 1 to M x N in the four corners of the input matrix
@@ -67,6 +73,8 @@ Order of algorithm - O(MN)^2
 
         return max
 
+    main.cpp:
+
     g)getMaxSum:
         //select first two matrices
         int sum=0
@@ -74,21 +82,24 @@ Order of algorithm - O(MN)^2
             for j=0 to N
                 for x=0 to M
                     for y=0 to N
+                        //get third matrix
                         int max=0
 
                         a = Tfunc(x-1,y-1)  //T function for top left corner
                         b = Tfunc(x-1,y+K)  //T function for bottom left corner
                         c = Tfunc(x+K,y-1)  //T function for top right corner
                         d = Tfunc(x+K,y+K)  //T function for bottom right corner
-                        //e = bottom(y+K)
-                        //f = right(x+K)
-                        max=MAX(a,b,c,d)
+                        e = bottom(y+K)
+                        f = right(x+K)
+                        max=MAX(a,b,c,d,e,f)
 
                         sum=MAX(sum,sumArray[i][j] + sumArray[x][y] + max)
 
         return sum
 
-	h)intersect(w,x,y,z,a,b,k):
+	intersection.cpp:
+    
+    h)intersect(w,x,y,z,a,b,k):
 		//Given the coordinates of an area and a upper left coordinated of the matrix, it checks if the matrix intersects with the area.
 		if(arealength<k)or(areabreadth<K)
 			return 1;
@@ -104,9 +115,10 @@ Order of algorithm - O(MN)^2
 	    else
 			return 0;
 
-	i)tfunc.cpp:
-		tfunc():
-			//takes the area array, the top-left coordinates of two matrices and the coordinates of a point, the rows and colms of the input matrix, and a given k of whose order, matrices are got.
+	tfunc.cpp:
+	
+    j)tfunc():
+		//takes the area array, the top-left coordinates of two matrices and the coordinates of a point, the rows and colms of the input matrix, and a given k of whose order, matrices are got.
 			The regions checked are the 4 regions each from the 4 corners to the given pt.
 
 			The foll if condns represent those regions checked:-
@@ -122,21 +134,32 @@ Order of algorithm - O(MN)^2
 
 			return max(a,b,c,d) //This returns the max of all matrices of the regions; thus the 3rd matrix
 
+    parallel.cpp:
+
+    k)bottom:
+        //gives the maximum K x K matrix in the region below the given line specified by the value of n
+            
+            if(intersect(0,n,M-1,N-1,matx,maty,K)==0)   //checks if the other matrix lies in this region already
+                return areas(this region)
+
+    l)right:
+        //gives the maximum K x K matrix in the region to the right of the given line specified by the value of m
+            
+            if(intersect(m,0,M-1,N-1,matx,maty,K)==0)   //checks if the other matrix lies in this region already
+                return areas(this region)
+
 
 4. Data Structures Used
 	We used the data structure arrays, consisting of both 2-dimensional as well as 3-dimensional ones.
 
 5. Defects in Code
 	i) Algorithm is of O(mn)^2 so it can take an input of maximum size approximately 100 X 100 (to execute under a minute; upto 50 x 50 within 3 seconds).
-	ii) If, in a test case, 3 matrixes of kXk are not possible but 2 are possible, the algorithm returns sum of the 2 maximim possible matrix rather than throwing exception.(testCase/exception.dat), in a test case, 3 matrixes of kXk are not possible but 2 are possible, the algorithm throws exception.(testCase/exception1.dat, testCase/exception2.dat)
-
 
 6. Individual Contributions
 	We discussed and came up with a possible yet efficient enough algorithm, together. When it came to coding and implementation:-
-	Anshul- wrote the functions in main.cpp, maximum K x K matrix in a given area in areas.cpp, parallel.cpp helped in debugging as well as documentation
-	Raghav- wrote the intersect function as well as the input.cpp, helped in debugging as well as documentation
-	Pranav- wrote the tfunc.cpp, helped in debugging as well as documentation
+	Anshul- wrote the functions in main.cpp, areas.cpp, parallel.cpp; helped in debugging as well as documentation
+	Raghav- wrote the intersect function as well as the input.cpp; helped in debugging as well as documentation
+	Pranav- wrote the tfunc.cpp; helped in debugging as well as documentation
 
  7. Exception/Negative test case
- 	i)If, in a test case, 3 matrixes of kXk are not possible but 2 are possible, the algorithm throws exception.(testCase/exception1.dat, testCase/exception2.dat)
-	ii)If K>M or K>N, the test case has no solution.
+	i)If three K x K matrices cannot fit in the given M x N matrix, the test case has no solution and an error message is shown (ex. in testCases/exception.dat for K=3).
