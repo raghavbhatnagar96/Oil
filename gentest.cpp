@@ -11,22 +11,26 @@ int main()
 	int i=1,a,n,m;
 	fstream f;
 	f.open("test3.dat",ios::in | ios::trunc | ios::out);
-	m=(rand()%40)+2;
 	n=(rand()%40)+2;
-	cout<<"M: "<<m<<"   N: "<<n<<endl;
-	f<<m<<" "<<n;
+	m=(rand()%40)+2;
+	cout<<"M(number of Coloumns): "<<n<<"   N(Number of rows): "<<m<<endl;
+	f<<n<<" "<<m;
 	f<<"\n";
 	while(i<=(m*n))
-		{
+	{
 		a=rand()%10;
 		//cout<<a<<" ";
-		f<<a<<" ";
-		if((i%n)==0)
+		if(a!=0)
+		{
+			//cout<<a<<" ";
+			f<<a<<" ";
+			if((i%n)==0)
 			{
-			//cout<<"\n";
-			f<<"\n";
+				//cout<<"\n";
+				f<<"\n";
 			}
-		i++;
+			i++;
 		}
+	}
 	return 0;
 	}
