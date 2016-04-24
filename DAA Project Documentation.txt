@@ -132,5 +132,6 @@ Order of algorithm - O(MN)^2
 6. Individual Contributions
 	We discussed and came up with a possible yet efficient enough algorithm, together. When it came to coding and implementation:-
 	Anshul- wrote the functions in main.cpp, maximum K x K matrix in a given area in areas.cpp, parallel.cpp helped in debugging as well as documentation
-	Raghav- wrote the intersection function as well as the input.cpp, helped in debugging as well as documentation
+	Raghav- wrote the intersect function as well as the input.cpp, helped in debugging as well as documentation
 	Pranav- wrote the tfunc.cpp, helped in debugging as well as documentation
+
