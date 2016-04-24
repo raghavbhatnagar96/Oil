@@ -1,3 +1,4 @@
+#include<fstream>
 #include<iostream>
 using namespace std;
 #include"areas.cpp"
@@ -27,25 +28,26 @@ int getMaxSum(int ***areas,int **matrix,int M,int N,int K)
                     if(intersect(i,j,i+K-1,j+K-1,x,y,K)==0)
                     {
                         //get the 3rd matrix as the maximum in all remaining areas
-                        max=maxm(max,Tfun(areas,j,i,y,x,y,x,M,N,K));
-                        max=maxm(max,Tfun(areas,j,i,y,x,y,x+K-1,M,N,K));
-                        max=maxm(max,Tfun(areas,j,i,y,x,y+K-1,x,M,N,K));
-                        max=maxm(max,Tfun(areas,j,i,y,x,y+K-1,x+K-1,M,N,K));
-                        max=maxm(max,bottom(areas,M,N,y+K,i,j,K));
-                        max=maxm(max,right(areas,M,N,x+K,i,j,K));
+                        max=maxm(max,Tfun(areas,j,i,y,x,y-1,x-1,N,M,K));
+                        max=maxm(max,Tfun(areas,j,i,y,x,y-1,x+K,N,M,K));
+                        max=maxm(max,Tfun(areas,j,i,y,x,y+K,x-1,N,M,K));
+                        max=maxm(max,Tfun(areas,j,i,y,x,y+K,x+K,N,M,K));
+                        max=maxm(max,bottom(areas,N,M,y+K,i,j,K));
+                        max=maxm(max,right(areas,N,M,x+K,i,j,K));
                         //cout<<"max is:"<<max<<endl;
                         //sum=maxm(sum,(matrix[i][j]+matrix[x][y]+max));
-                        if((matrix[i][j]+matrix[x][y]+max)>sum)
+                        int tmp=(matrix[i][j]+matrix[x][y]+max);
+                        if(tmp>sum)
                         {
-                            sum=(matrix[i][j]+matrix[x][y]+max);
+                            sum=tmp;
                             /*
-                            cout<<(Tfun(areas,j,i,y,x,y,x,M,N,K))<<" ";
-                            cout<<(Tfun(areas,j,i,y,x,y,x+K-1,M,N,K))<<" ";
-                            cout<<(Tfun(areas,j,i,y,x,y+K-1,x,M,N,K))<<" ";
-                            cout<<(Tfun(areas,j,i,y,x,y+K-1,x+K-1,M,N,K))<<" ";
-                            cout<<(bottom(areas,M,N,y+K,i,j,K))<<" ";
-                            cout<<(right(areas,M,N,x+K,i,j,K))<<endl;
-                            cout<<i<<" "<<j<<" "<<x<<" "<<y<<" "<<max<<" "<<sum<<endl;
+                            cout<<Tfun(areas,j,i,y,x,y-1,x-1,N,M,K)<<" ";
+                            cout<<Tfun(areas,j,i,y,x,y-1,x+K,N,M,K)<<" ";
+                            cout<<Tfun(areas,j,i,y,x,y+K,x-1,N,M,K)<<" ";
+                            cout<<Tfun(areas,j,i,y,x,y+K,x+K,N,M,K)<<" ";
+                            cout<<(bottom(areas,N,M,y+K,i,j,K))<<" ";
+                            cout<<(right(areas,N,M,x+K,i,j,K))<<endl;
+                            cout<<"max is:"<<i<<" "<<j<<" "<<x<<" "<<y<<" "<<max<<" "<<sum<<endl;
                             */
                         }
                     }
@@ -58,28 +60,29 @@ int getMaxSum(int ***areas,int **matrix,int M,int N,int K)
 
 int main(int argc, char *argv[])
 {
-
     //read test file
-    int M,N;    //M is no. of columns and Nis no. of rows
-    fstream input;
-    input.open("test.dat", ios::in);
-    input>>M;
-    input>>N;
+    int M,N;    //M is no. of columns and N is no. of rows
+    ifstream input;
 
-    if(argc != 2)//To make sure that K is inputed.
+    if(argc != 3)//To make sure that K is inputed.
     {
-        cout<<"Input format is: './oil <K>'\n";
+        cout<<"Input format is: './oil <testFile> <K>'\n";
         return 0;
     }
 
-    int K= atoi(argv[1]);//
+    input.open(argv[1], ios::in);
+    input>>M;
+    input>>N;
+    input.close();
+
+    int K= atoi(argv[2]);//
     //int K=2;
     if((K>M)||(K>N))//Make sure that K is less than M and N
     {
         return 0;
     }
 
-    int **inputArray = inputFunction("test.dat");
+    int **inputArray = inputFunction(argv[1]);
     int **sumArray= getSumArray(inputArray, M, N, K);
     int ***areas=new int**[M+1];
     for(int i=0;i<=M;i++)
@@ -90,4 +93,5 @@ int main(int argc, char *argv[])
     }
    getMaxInArea(areas,sumArray,M,N,K); 
    cout<<"Maximum output is:"<<getMaxSum(areas,sumArray,M,N,K)<<endl;
+   //cout<<Tfun(areas,0,4,4,4,8,3,N,M,K)<<endl;
 }

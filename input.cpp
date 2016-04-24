@@ -1,12 +1,8 @@
-#include <iostream>
-#include <fstream>
-#include <stdlib.h>
-
-using namespace std;
+#include<stdlib.h>
 
 int **inputFunction(const char* filename)//Returns the inputArray
 {
-    int M,N,i,j; //M rows and N coloumns!!M is coloumns if M N is inputed
+    int M,N,i,j; //M is coloumns N is rows
     fstream input;
     input.open(filename, ios::in);
     input>>M;
@@ -16,9 +12,9 @@ int **inputFunction(const char* filename)//Returns the inputArray
     {
         inputArray[i]=new int[N];
     }
-    for(i=0;i<M;i++)
+    for(int j=0;j<N;j++)
     {
-        for(j=0;j<N;j++)
+        for(int i=0;i<M;i++)
         {
             input>>inputArray[i][j];
         }
