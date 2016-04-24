@@ -8,6 +8,11 @@ Given an MxN matrix and a number K (K<M and K<N), our code searches for 3 disjoi
 
 	b)gentest.cpp
 		This generates a test case for any range of rows and columns from 1 to 40, and saves it in a "testfile".dat. Subsequent executions of this code will rewrite test cases over the previous ones in the same "testfile".dat
+	c)intersection.cpp:
+		Given the coordinates of an area and a upper left coordinated of the matrix, it checks if the matrix intersects with the area.
+		PseudoCode:
+	d)input.cpp:
+		Takes input and stores in a 2D matrix. Then calculates sum of submatrix and stores in a 2D matrix for further processing.
 
 2. Data Structures Used
 	We used the data structure arrays, consisting of both 2-dimensional as well as 3-dimensional ones.
