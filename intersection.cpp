@@ -3,7 +3,7 @@
 
 int isInside(int w, int x, int y, int z, int a, int b)
 {
-    if((a>w)&(a<y)&(b>x)&(b<z))
+    if((a>=w)&(a<=y)&(b>=x)&(b<=z))
     {
         return 1;
     }
