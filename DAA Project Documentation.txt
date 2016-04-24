@@ -110,7 +110,7 @@ Order of algorithm - O(MN)^2
 	Proper compiling instructions are to be done as stated in the makefile. The max sum of the 3 matrices are then outputted on the screen.
 
 4. Defects in Code
-	i) Algorithm is of O(mn)^2 so can take an input of maximum size approximately 100 X 100.
+	i) Algorithm is of O(mn)^2 so it can take an input of maximum size approximately 100 X 100 (to execute under a minute; upto 50 x 50 within 3 seconds).
 
 5. Individual Contributions
 	We discussed and came up with a possible yet efficient enough algorithm, together. When it came to coding and implementation:-
