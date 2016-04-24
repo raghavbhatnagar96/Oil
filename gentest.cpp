@@ -19,11 +19,11 @@ int main()
 	while(i<=(m*n))
 		{
 		a=rand()%10;
-		cout<<a<<" ";
+		//cout<<a<<" ";
 		f<<a<<" ";
 		if((i%n)==0)
 			{
-			cout<<"\n";
+			//cout<<"\n";
 			f<<"\n";
 			}
 		i++;
