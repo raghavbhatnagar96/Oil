@@ -32,6 +32,12 @@ void fourCorners(int ***areas,int **matrix,int m,int n,int k,int i,int j)
     areas[i][j][1]=matrixMax(matrix,m-i,0,m-1,j-1,k);
     areas[i][j][2]=matrixMax(matrix,m-i,n-j,m-1,n-1,k);
     areas[i][j][3]=matrixMax(matrix,0,n-j,i-1,n-1,k);
+    /*
+    cout<<"1:"<<i<<" "<<j<<" "<<areas[i][j][0]<<endl;
+    cout<<"2:"<<i<<" "<<j<<" "<<areas[i][j][1]<<endl;
+    cout<<"3:"<<i<<" "<<j<<" "<<areas[i][j][2]<<endl;
+    cout<<"4:"<<i<<" "<<j<<" "<<areas[i][j][3]<<endl;
+    */
 }
 
 /*
