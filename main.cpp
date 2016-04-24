@@ -33,8 +33,13 @@ int getMaxSum(int ***areas,int **matrix,int M,int N,int K)
                         max=maxm(max,Tfun(areas,j,i,y,x,y+K-1,x+K-1,M,N,K));
                         max=maxm(max,bottom(areas,M,N,y+K-1,i,j,K));
                         max=maxm(max,right(areas,M,N,x+K-1,i,j,K));
-            
-                        sum=maxm(sum,(matrix[i][j]+matrix[x][y]+max));
+                        //cout<<"max is:"<<max<<endl;
+                        //sum=maxm(sum,(matrix[i][j]+matrix[x][y]+max));
+                        if((matrix[i][j]+matrix[x][y]+max)>sum)
+                        {
+                            sum=(matrix[i][j]+matrix[x][y]+max);
+                            cout<<i<<" "<<j<<" "<<x<<" "<<y<<" "<<max<<" "<<sum<<endl;
+                        }
                     }
                 }
             }
@@ -53,16 +58,14 @@ int main(int argc, char *argv[])
     input>>M;
     input>>N;
 
-    /*
     if(argc != 2)//To make sure that K is inputed.
     {
         cout<<"Input format is: './oil <K>'\n";
         return 0;
     }
-    */
 
-    //int K= atoi(argv[1]);//
-    int K=2;
+    int K= atoi(argv[1]);//
+    //int K=2;
     if((K>M)||(K>N))//Make sure that K is less than M and N
     {
         return 0;

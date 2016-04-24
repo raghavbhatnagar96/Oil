@@ -22,7 +22,7 @@ int matrixMax(int **matrix,int startx,int starty,int endx,int endy,int k)
                 max=matrix[x][y];
         }
     }
-    cout<<"max is: "<<startx<<" "<<starty<<" "<<endx<<" "<<endy<<" "<<max<<endl;
+    //cout<<"max is: "<<startx<<" "<<starty<<" "<<endx<<" "<<endy<<" "<<max<<endl;
     return max;
 }
 
@@ -52,9 +52,9 @@ void recur(int ****areas,int **matrix,int m,int n,int k,int startx,int starty,in
 
 void getMaxInArea(int ***areas,int **matrix,int m,int n,int k)
 {
-    for(int i=k;i<=m;i++)
+    for(int i=1;i<=m;i++)
     {
-        for(int j=k;j<=n;j++)
+        for(int j=1;j<=n;j++)
             fourCorners(areas,matrix,m,n,k,i,j);
     }
 }
