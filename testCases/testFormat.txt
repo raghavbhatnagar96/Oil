@@ -1,0 +1,11 @@
+Format of the test case:
+
+M N
+[MXN matrix witn M Coloumns and N Rows]
+
+
+Input Format:
+$./main <filename> <value of K>
+
+Output:
+Maximum output is: <Value>
