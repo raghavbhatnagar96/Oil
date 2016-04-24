@@ -32,8 +32,8 @@ int getMaxSum(int ***areas,int **matrix,int M,int N,int K)
                         max=maxm(max,Tfun(areas,j,i,y,x,y-1,x+K,N,M,K));
                         max=maxm(max,Tfun(areas,j,i,y,x,y+K,x-1,N,M,K));
                         max=maxm(max,Tfun(areas,j,i,y,x,y+K,x+K,N,M,K));
-                        max=maxm(max,bottom(areas,N,M,y+K,i,j,K));
-                        max=maxm(max,right(areas,N,M,x+K,i,j,K));
+                        //max=maxm(max,bottom(areas,N,M,y+K,i,j,K));
+                        //max=maxm(max,right(areas,N,M,x+K,i,j,K));
                         //cout<<"max is:"<<max<<endl;
                         //sum=maxm(sum,(matrix[i][j]+matrix[x][y]+max));
                         int tmp=(matrix[i][j]+matrix[x][y]+max);
