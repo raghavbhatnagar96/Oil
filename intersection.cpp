@@ -31,11 +31,3 @@ int intersect(int w, int x, int y, int z, int a, int b, int k)//(w,x) and (y,z) 
     else
         return 0;
 }
-
-/*
-int main()
-{
-    std::cout << doesIntersect(0,0,4,4,3,3,3);
-    return 0;
-}
-*/
