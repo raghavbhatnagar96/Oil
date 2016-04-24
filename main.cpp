@@ -77,8 +77,15 @@ int main(int argc, char *argv[])
 
     int K= atoi(argv[2]);//
     //int K=2;
-    if((K>M)||(K>N))//Make sure that K is less than M and N
+    if(K<=0)
     {
+        cout<<"incorrect value of K..."<<endl;
+        return 0;
+    }
+
+    if(!(((K<=M && M<(2*K)) && N>=(3*K)) || (((2*K)<=M && M<(3*K)) && N>=(2*K)) || (((3*K)<=M) && N>=K)))//Make sure that K is less than M and N
+    {
+        cout<<"K is too large..."<<endl;
         return 0;
     }
 
@@ -92,12 +99,6 @@ int main(int argc, char *argv[])
             areas[i][j]=new int[4];
     }
    getMaxInArea(areas,sumArray,M,N,K);
-   int output=getMaxSum(areas,sumArray,M,N,K);
-   if(output==0)
-   {
-        cout<<"K is too large, try using a smaller K\n";
-        return 0;
-   }
-   cout<<"Maximum output is:"<<output<<endl;
+   cout<<"Maximum output is:"<<getMaxSum(areas,sumArray,M,N,K)<<endl;
    //cout<<Tfun(areas,0,4,4,4,8,3,N,M,K)<<endl;
 }
