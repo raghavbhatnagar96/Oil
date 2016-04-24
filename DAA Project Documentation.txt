@@ -128,7 +128,7 @@ Order of algorithm - O(MN)^2
 
 5. Defects in Code
 	i) Algorithm is of O(mn)^2 so it can take an input of maximum size approximately 100 X 100 (to execute under a minute; upto 50 x 50 within 3 seconds).
-	ii) If, in a test case, 3 matrixes of kXk are not possible but 2 are possible, the algorithm throws exception.(testCase/exception1.dat, testCase/exception2.dat)
+	ii) If, in a test case, 3 matrixes of kXk are not possible but 2 are possible, the algorithm returns sum of the 2 maximim possible matrix rather than throwing exception.(testCase/exception.dat), in a test case, 3 matrixes of kXk are not possible but 2 are possible, the algorithm throws exception.(testCase/exception1.dat, testCase/exception2.dat)
 
 
 6. Individual Contributions
