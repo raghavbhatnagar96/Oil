@@ -11,8 +11,8 @@ int main()
 	int i=1,a,n,m;
 	fstream f;
 	f.open("test3.dat",ios::in | ios::trunc | ios::out);
-	m=(rand()%100)+2;
-	n=(rand()%100)+2;
+	m=(rand()%40)+2;
+	n=(rand()%40)+2;
 	cout<<"M: "<<m<<"   N: "<<n<<endl;
 	f<<m<<" "<<n;
 	f<<"\n";
