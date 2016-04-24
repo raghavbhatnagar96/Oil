@@ -13,6 +13,7 @@ int Tfun(int ***areas,int fx, int fy, int sx, int sy, int mx, int my, int N, int
     if(my>=M || mx>=N || my<0 || mx<0)
         return 0;
 	int max=0,a,b,c,d,e,f,g,h,i,j,k,l;
+    /*
 	if((!intersect(0,0,my,N-1,fy,fx,K)) && (!intersect(0,0,my,N-1,sy,sx,K)))
 		{
 		a=areas[my+1][N][0];//MAXTOPLEFT; // (N-1) x (my)
@@ -20,6 +21,7 @@ int Tfun(int ***areas,int fx, int fy, int sx, int sy, int mx, int my, int N, int
 		if(max<a)
 			max=a;
 		}
+    */
 	if((!intersect(my,0,M-1,mx,fy,fx,K)) && (!intersect(my,0,M-1,mx,sy,sx,K)))
 		{
 		b=areas[M-my][mx+1][1];//MAXTOPRIGHT; //(mx) x (M-1-my)
@@ -49,6 +51,7 @@ int Tfun(int ***areas,int fx, int fy, int sx, int sy, int mx, int my, int N, int
 		if(max<e)
 			max=e;
 		}
+    /*
 	if((!intersect(my,0,M-1,N-1,fy,fx,K)) && (!intersect(my,0,M-1,N-1,sy,sx,K)))
 		{
 		f=areas[M-my][N][1];//MAXTOPRIGHT;// (N-1) x (M-1-my)
@@ -56,6 +59,7 @@ int Tfun(int ***areas,int fx, int fy, int sx, int sy, int mx, int my, int N, int
 		if(max<f)
 			max=f;
 		}
+    */
 
     /*
 	if((!intersect(0,0,my,mx,fy,fx,K)) && (!intersect(0,0,my,mx,sy,sx,K)))
@@ -73,7 +77,7 @@ int Tfun(int ***areas,int fx, int fy, int sx, int sy, int mx, int my, int N, int
 		if(max<h)
 			max=h;
 		}
-    */
+
 	if((!intersect(0,mx,M-1,N-1,fy,fx,K)) && (!intersect(0,mx,M-1,N-1,sy,sx,K)))
 		{
 		i=areas[M][N-mx][2];//MAXBOTRIGHT;//(N-1-mx) x (M-1)
@@ -89,6 +93,7 @@ int Tfun(int ***areas,int fx, int fy, int sx, int sy, int mx, int my, int N, int
 		if(max<j)
 			max=j;
 		}
+    */
     /*
 	if((!intersect(0,mx,my,N-1,fy,fx,K)) && (!intersect(0,mx,my,N-1,sy,sx,K)))
 		{
