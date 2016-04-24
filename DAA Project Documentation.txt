@@ -17,7 +17,7 @@ Choosing the first two matrices is O(MN)^2. We check the remaining region for th
 
 Order of algorithm - O(MN)^2
 
-	
+
 	a)main()
         sumArray[M][N] stores the partial sums of all the K x K matrices
         areas[M][N][4] stores the maximum K x K matrix in a given area
@@ -31,7 +31,7 @@ Order of algorithm - O(MN)^2
 		for j=0 to N
 	        for i=0 to M
 	            input>>inputArray[i][j];
-		return inputArray;        
+		return inputArray;
 
 	c)getSumArray:
 	    //Calculates sum of submatrix and stores in a 2D matrix for further processing.
@@ -80,7 +80,7 @@ Order of algorithm - O(MN)^2
                         b = Tfunc(x-1,y+K)  //T function for bottom left corner
                         c = Tfunc(x+K,y-1)  //T function for top right corner
                         d = Tfunc(x+K,y+K)  //T function for bottom right corner
-                        //e = bottom(y+K)     
+                        //e = bottom(y+K)
                         //f = right(x+K)
                         max=MAX(a,b,c,d)
 
@@ -112,7 +112,7 @@ Order of algorithm - O(MN)^2
 			The foll if condns represent those regions checked:-
 
 			if((!intersect(my,0,M-1,mx,fy,fx,K)) && (!intersect(my,0,M-1,mx,sy,sx,K)))
-				a=areas(this region) 
+				a=areas(this region)
 			if((!intersect(my,mx,M-1,N-1,fy,fx,K)) && (!intersect(my,mx,M-1,N-1,sy,sx,K)))
 				b=areas(this region)
 			if((!intersect(0,0,my,mx,fy,fx,K)) && (!intersect(0,0,my,mx,sy,sx,K)))
@@ -128,6 +128,8 @@ Order of algorithm - O(MN)^2
 
 5. Defects in Code
 	i) Algorithm is of O(mn)^2 so it can take an input of maximum size approximately 100 X 100 (to execute under a minute; upto 50 x 50 within 3 seconds).
+	ii) If, in a test case, 3 matrixes of kXk are not possible but 2 are possible, the algorithm returns sum of the 2 maximim possible matrix rather than throwing exception.(testCase/exception.dat)
+
 
 6. Individual Contributions
 	We discussed and came up with a possible yet efficient enough algorithm, together. When it came to coding and implementation:-
@@ -135,3 +137,6 @@ Order of algorithm - O(MN)^2
 	Raghav- wrote the intersect function as well as the input.cpp, helped in debugging as well as documentation
 	Pranav- wrote the tfunc.cpp, helped in debugging as well as documentation
 
+ 7. Exception/Negative test case
+ 	i)If, in a test case, 3 matrixes of kXk are not possible but 2 are possible, the algorithm return sum of the 2 maximim possible matrix rather than throwing exception.(testCase/exception1.dat, testCase/exception2.dat)
+	ii)If K>M or K>N, the test case has no solution.
