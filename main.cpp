@@ -92,6 +92,12 @@ int main(int argc, char *argv[])
             areas[i][j]=new int[4];
     }
    getMaxInArea(areas,sumArray,M,N,K);
-   cout<<"Maximum output is:"<<getMaxSum(areas,sumArray,M,N,K)<<endl;
+   int output=getMaxSum(areas,sumArray,M,N,K);
+   if(output==0)
+   {
+        cout<<"K is too large, try using a smaller K\n";
+        return 0;
+   }
+   cout<<"Maximum output is:"<<output<<endl;
    //cout<<Tfun(areas,0,4,4,4,8,3,N,M,K)<<endl;
 }
