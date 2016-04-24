@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
 
     if(argc != 3)//To make sure that K is inputed.
     {
-        cout<<"Input format is: './oil <testFile> <K>'\n";
+        cout<<"Input format is: './main <testFile> <K>'\n";
         return 0;
     }
 
@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
         for(int j=0;j<=N;j++)
             areas[i][j]=new int[4];
     }
-   getMaxInArea(areas,sumArray,M,N,K); 
+   getMaxInArea(areas,sumArray,M,N,K);
    cout<<"Maximum output is:"<<getMaxSum(areas,sumArray,M,N,K)<<endl;
    //cout<<Tfun(areas,0,4,4,4,8,3,N,M,K)<<endl;
 }
