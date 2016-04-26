@@ -2,7 +2,7 @@
 #include<iostream>
 using namespace std;
 
-int main()
+int main()//Create matrix with all 1's to customize
 {
     ofstream out;
     out.open("test4.dat");
@@ -13,4 +13,3 @@ int main()
         out<<endl;
     }
 }
-
