@@ -47,5 +47,6 @@ int **getSumArray(int **inputArray, int M, int N, int K)//returns 2D array of si
             sumArray[i][j]=sum;
         }
     }
+
     return sumArray;
 }
